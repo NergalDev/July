@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Кабинет родителя</h2>
+<h4>Мои записи:</h4>
+<ul class="list-group">
+    {% for appt in appointments %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Занятие {{ appt.date_time.strftime('%d.%m.%Y в %H:%M') }} - Статус: <b>{{ appt.status }}</b>
+        {% if appt.status == 'ожидает оплаты' %}
+        <a href="/pay/{{ appt.id }}" class="btn btn-sm btn-warning">Оплатить 1500₽</a>
+        {% endif %}
+    </li>
+    {% else %}
+    <p>У вас пока нет записей.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Запись на индивидуальное занятие</h2>
+<form method="POST" class="mt-4" style="max-width: 400px;">
+    <div class="mb-3">
+        <label for="date" class="form-label">Выберите дату (Пн-Пт):</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+    </div>
+    <div class="mb-3">
+        <label for="time" class="form-label">Выберите время:</label>
+        <select class="form-select" id="time" name="time" required>
+            {% for time in time_slots %}
+                <option value="{{ time }}">{{ time }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Записаться</button>
+</form>
+{% endblock %}

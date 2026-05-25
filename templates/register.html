@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Регистрация</h2>
+<form method="POST" style="max-width: 300px;">
+    <input type="text" name="username" class="form-control mb-2" placeholder="Логин" required>
+    <input type="password" name="password" class="form-control mb-2" placeholder="Пароль" required>
+    <select name="role" class="form-select mb-3">
+        <option value="parent">Родитель / Ученик</option>
+        <option value="logoped">Логопед</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+</form>
+{% endblock %}

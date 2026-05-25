@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Вход в систему</h2>
+<form method="POST" style="max-width: 300px;" class="mt-3">
+    <div class="mb-3">
+        <label for="username" class="form-label">Логин</label>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Введите логин" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Пароль</label>
+        <input type="password" name="password" id="password" class="form-control" placeholder="Введите пароль" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+</form>
+<div class="mt-3">
+    <small>Еще нет аккаунта? <a href="/register">Зарегистрироваться</a></small>
+</div>
+{% endblock %}

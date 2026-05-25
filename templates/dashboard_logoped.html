@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Кабинет Логопеда</h2>
+<div class="alert alert-success">
+    Общий доход платформы: <b>{{ income }} руб.</b>
+</div>
+<h4>Все записи учеников:</h4>
+<ul class="list-group">
+    {% for appt in appointments %}
+    <li class="list-group-item">
+        Клиент ID {{ appt.user_id }} | Дата: {{ appt.date_time.strftime('%d.%m.%Y %H:%M') }} | Статус: {{ appt.status }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

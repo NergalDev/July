@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mb-5">
+    <div class="col-md-9">
+        <div class="card p-4 shadow">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold" style="color: #ff9800;">📋 Первичная экспресс-диагностика речи</h2>
+                <p class="text-muted text-center">Развернутый тест для родителей. Позволяет определить уровень речевого развития ребенка и необходимость очной консультации.</p>
+            </div>
+
+            <form id="logoTestForm">
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">1. Укажите возраст вашего ребенка:</label>
+                    <select class="form-select rounded-pill" id="q1">
+                        <option value="0">До 3 лет</option>
+                        <option value="1">3 - 4 года</option>
+                        <option value="2">4 - 5 лет</option>
+                        <option value="3">Старше 5 лет</option>
+                    </select>
+                </div>
+
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">2. Искажает или заменяет ли ребенок звуки в речи (например, «лыба» вместо «рыба», «сапка» вместо «шапка»)?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_2" value="3" checked>
+                        <label class="form-check-content" for="q2_2">Да, заменяет или пропускает много звуков</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_1" value="1">
+                        <label class="form-check-content" for="q2_1">Не выговаривает только 1-2 сложных звука (например, Р или Л)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_0" value="0">
+                        <label class="form-check-content" for="q2_0">Нет, произносит все звуки четко и правильно</label>
+                    </div>
+                </div>
+
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">3. Переставляет или пропускает ли ребенок слоги в сложных словах (например, «апидор» вместо «помидор», «велик» вместо «велосипед»)?</label>
+                    <select class="form-select rounded-pill" id="q3">
+                        <option value="2">Да, часто путает и сокращает слова</option>
+                        <option value="1">Только в очень длинных или незнакомых словах</option>
+                        <option value="0">Нет, хорошо справляется со сложной слоговой структурой</option>
+                    </select>
+                </div>
+
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">4. Насколько речь ребенка понятна окружающим людям (не членам семьи)?</label>
+                    <select class="form-select rounded-pill" id="q4">
+                        <option value="0">Понимают абсолютно всё без переспрашивания</option>
+                        <option value="1">Понимают в целом, но иногда приходится переводить</option>
+                        <option value="3">Посторонние люди почти ничего не понимают</option>
+                    </select>
+                </div>
+
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">5. Способен ли ребенок составить связный рассказ по картинке или пересказать короткую сказку?</label>
+                    <select class="form-select rounded-pill" id="q5">
+                        <option value="0">Да, строит красивые развернутые предложения</option>
+                        <option value="1">Говорит простыми фразами, иногда путает сюжет</option>
+                        <option value="2">Отвечает только односложно (да/нет) или отдельными словами</option>
+                    </select>
+                </div>
+
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">6. Допускает ли ребенок грамматические ошибки при согласовании слов (например, «красный сумка», «пять стулы», «мы пошли кушать» вместо «пойдём»)?</label>
+                    <select class="form-select rounded-pill" id="q6">
+                        <option value="2">Да, путает окончания, падежи и рода постоянно</option>
+                        <option value="1">Ошибки бывают, но редко</option>
+                        <option value="0">Нет, говорит грамматически правильно</option>
+                    </select>
+                </div>
+
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">7. Различает ли ребенок похожие звуки на слух? Проведите мини-тест: попросите хлопнуть, если он услышит звук [Ш] в ряду: С-С-Ш-С-Ш.</label>
+                    <select class="form-select rounded-pill" id="q7">
+                        <option value="0">Ребенок легко справился и ни разу не ошибся</option>
+                        <option value="2">Ребенок путается и хлопает невпопад</option>
+                    </select>
+                </div>
+
+                <div class="mb-4 p-3 bg-light rounded-4">
+                    <label class="form-label fw-bold">8. Замечаете ли вы запинки, судорожное повторение первых звуков в словах или излишне торопливый темп речи (захлебывание)?</label>
+                    <select class="form-select rounded-pill" id="q8">
+                        <option value="3">Да, есть выраженные запинки или сильный темп</option>
+                        <option value="0">Нет, темп речи плавный и размеренный</option>
+                    </select>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-primary btn-lg px-5 shadow" onclick="calculateComplexResult()">Получить экспертное заключение</button>
+                </div>
+            </form>
+
+            <div id="resultBox" class="mt-5 p-4 rounded-4 text-center" style="display: none; border-width: 2px;">
+                <h3 id="resultTitle" class="fw-bold mb-3"></h3>
+                <p id="resultText" class="fs-5 mb-4"></p>
+                <div class="p-3 bg-white rounded-3 shadow-sm text-start mb-4">
+                    <h5><b>📌 Рекомендованные шаги от «ЛогоДруг»:</b></h5>
+                    <ul id="recommendationsList" class="mb-0"></ul>
+                </div>
+                <a href="/booking" class="btn btn-success btn-lg px-5 rounded-pill shadow">Записаться на диагностику онлайн</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function calculateComplexResult() {
+    let q2_val = parseInt(document.querySelector('input[name="q2"]:checked').value);
+    let score = parseInt(document.getElementById('q1').value) +
+                q2_val +
+                parseInt(document.getElementById('q3').value) +
+                parseInt(document.getElementById('q4').value) +
+                parseInt(document.getElementById('q5').value) +
+                parseInt(document.getElementById('q6').value) +
+                parseInt(document.getElementById('q7').value) +
+                parseInt(document.getElementById('q8').value);
+
+    let box = document.getElementById('resultBox');
+    let title = document.getElementById('resultTitle');
+    let text = document.getElementById('resultText');
+    let recList = document.getElementById('recommendationsList');
+
+    box.style.display = 'block';
+    recList.innerHTML = ''; // Очистка
+
+    if (score >= 8) {
+        box.className = 'mt-5 p-4 rounded-4 text-center bg-danger bg-opacity-10 border border-danger shadow-sm';
+        title.innerHTML = '⚠️ Выявлены выраженные речевые нарушения';
+        title.style.color = '#b91c1c';
+        text.innerHTML = 'Сумма показателей указывает на задержку или стойкое нарушение развития речи (возможно ФФН или ОНР). Рекомендуется не откладывать визит к специалисту для предотвращения проблем при обучении в школе.';
+
+        recList.innerHTML += '<li>Обязательная консультация логопеда-дефектолога.</li>';
+        recList.innerHTML += '<li>Проведение комплексной диагностики устной речи.</li>';
+        recList.innerHTML += '<li>Ежедневные домашние занятия автоматизацией звуков по 10-15 минут в модуле "Обучение".</li>';
+    } else if (score >= 4 && score < 8) {
+        box.className = 'mt-5 p-4 rounded-4 text-center bg-warning bg-opacity-10 border border-warning shadow-sm';
+        title.innerHTML = '🟡 Требуется коррекция отдельных звуков';
+        title.style.color = '#d97706';
+        text.innerHTML = 'Общее развитие речи в пределах возрастной нормы, однако присутствуют локальные дефекты звукопроизношения. Такие проблемы успешно решаются точечным курсом упражнений.';
+
+        recList.innerHTML += '<li>Консультация логопеда для точной постановки проблемных звуков.</li>';
+        recList.innerHTML += '<li>Выполнение артикуляционной гимнастики по видеоурокам в нашем приложении.</li>';
+        recList.innerHTML += '<li>Контроль за правильным произношением в повседневной жизни.</li>';
+    } else {
+        box.className = 'mt-5 p-4 rounded-4 text-center bg-success bg-opacity-10 border border-success shadow-sm';
+        title.innerHTML = '✅ Речевое развитие соответствует норме';
+        title.style.color = '#15803d';
+        text.innerHTML = 'Поздравляем! На основе ответов структура и качество речи вашего ребенка полностью соответствуют его возрасту. Повода для беспокойства нет.';
+
+        recList.innerHTML += '<li>Профилактическое чтение скороговорок и чистоговорок.</li>';
+        recList.innerHTML += '<li>Использование развивающих игр из нашей интерактивной библиотеки материалов.</li>';
+    }
+}
+</script>
+{% endblock %}

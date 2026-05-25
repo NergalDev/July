@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Модуль обучения</h2>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Постановка звука</h4>
+                <p class="card-text">Артикуляционная гимнастика и видеоинструкции.</p>
+                <form action="/exercise/postanovka" method="GET">
+                    <select name="sound" class="form-select mb-3" required>
+                        <option value="" disabled selected>Выберите звук...</option>
+                        {% for sound in sounds %}
+                        <option value="{{ sound }}">{{ sound }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Перейти к видео</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mt-3 mt-md-0">
+            <div class="card-body">
+                <h4 class="card-title">Автоматизация звука</h4>
+                <p class="card-text">Закрепление звука в речи с помощью интерактивных карточек.</p>
+                <form action="/exercise/avtomatizaciya" method="GET">
+                    <select name="sound" class="form-select mb-3" required>
+                        <option value="" disabled selected>Выберите звук...</option>
+                        {% for sound in sounds %}
+                        <option value="{{ sound }}">{{ sound }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Показать задания</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="mb-4">
+    <a href="/learning" class="btn btn-outline-secondary btn-sm rounded-pill">&larr; Назад к выбору звуков</a>
+</div>
+
+<div class="text-center mb-4">
+    <h1 class="fw-bold" style="color: #ff9800;">
+        {% if category == 'постановка' %}📺 Видеоурок{% else %}🧩 Игровое задание{% endif %}
+    </h1>
+    <h3 class="text-muted">Звук: <span class="badge bg-info text-dark rounded-pill fs-4 px-4">{{ sound }}</span></h3>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card p-4 text-center">
+            {% if category == 'постановка' %}
+                <div class="alert alert-info rounded-4 border-0 bg-opacity-25" style="background-color: #e0f2fe;">
+                    Внимательно посмотрите видео и повторите артикуляционную гимнастику за специалистом.
+                </div>
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden mt-3 shadow-sm">
+                    {% if exercise and 'rutube.ru' in exercise.content_url %}
+                        <iframe src="{{ exercise.content_url }}" frameBorder="0" allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    {% else %}
+                        <div class="bg-dark text-white d-flex align-items-center justify-content-center">
+                            <p>Видео скоро появится</p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="alert alert-success rounded-4 border-0 bg-opacity-25" style="background-color: #dcfce7;">
+                    Назови предметы или повтори фразу на картинке, четко произнося звук.
+                </div>
+                <div class="mt-3">
+                    {% if exercise and exercise.content_url %}
+                        <img src="{{ exercise.content_url }}" class="img-fluid rounded-4 shadow-sm mb-3" alt="Задание" style="max-height: 550px; object-fit: contain;">
+                    {% else %}
+                        <div style="height: 400px; border: 3px dashed #cbd5e1; background-color: #f8fafc;" class="rounded-4 d-flex flex-column align-items-center justify-content-center">
+                            <span class="fs-4 text-muted">Иллюстрация загружается...</span>
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if exercise and exercise.answer_url %}
+                    <div class="mt-2 mb-3">
+                        <button class="btn btn-outline-warning btn-sm rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#answerCollapse">
+                            🔍 Подсказка / Проверить себя
+                        </button>
+                        <div class="collapse mt-3" id="answerCollapse">
+                            <div class="card card-body bg-light rounded-4 border border-warning border-opacity-25 shadow-sm">
+                                <h5 class="fw-bold mb-3 text-warning">Правильный ответ для родителей:</h5>
+                                <img src="{{ exercise.answer_url }}" class="img-fluid rounded-4 shadow-sm mx-auto" style="max-height: 350px;" alt="Ответ">
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                {% if category == 'автоматизация' %}
+                    <a href="/exercise/avtomatizaciya?sound={{ sound }}" class="btn btn-primary btn-lg px-4 shadow-sm" style="background-color: #ff9800;">
+                        🎲 Следующая карточка
+                    </a>
+                {% endif %}
+                <a href="/learning" class="btn btn-success btn-lg px-4 shadow-sm">Завершить занятие</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
